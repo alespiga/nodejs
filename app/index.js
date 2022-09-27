@@ -2,7 +2,7 @@
 const sum = require("./sum.js")
 const concat = require("./concat.js")
 
-const AddNumber= [1,2,3,4,5]
+const AddNumber= [1,2,3,4,6,7,8,9]
 array1 = [1,2,3,4,5]
 array2 = [1,2,3,4,5]
 
