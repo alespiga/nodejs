@@ -1,0 +1,23 @@
+{
+  "name": "first-app",
+  "version": "1.0.0",
+  "description": "first node.js app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo no test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alespiga/nodejs.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "spigarm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alespiga/nodejs/issues"
+  },
+  "homepage": "https://github.com/alespiga/nodejs#readme"
+}
