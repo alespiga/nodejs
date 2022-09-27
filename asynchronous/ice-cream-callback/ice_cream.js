@@ -1,18 +1,39 @@
 let stocks = {
-    Fruits : ["strawberry", "grapes", "banana", "apple"],
-    liquid : ["water", "ice"],
-    holder : ["cone", "cup", "stick"],
-    toppings : ["chocolate", "peanuts"],
- };
-
-
-let order = (call_prduction) =>{
-    console.log("Order placed. Please call production")
-    call_prduction()
+  Fruits: ["strawberry", "grapes", "banana", "apple"],
+  liquid: ["water", "ice"],
+  holder: ["cone", "cup", "stick"],
+  toppings: ["chocolate", "peanuts"],
 };
 
-let production = () =>{
-    console.log("Production has started")
+let order = (fruit_name, call_prduction) => {
+  setTimeout(() => {
+    console.log(`${stocks.Fruits[fruit_name]} was selected`);
+    call_prduction();
+  }, 2000);
 };
 
-order(production)
+let production = () => {
+  setTimeout(() => {
+    console.log("Production has started");
+    setTimeout(() => {
+      console.log("The fruit has been chopped");
+      setTimeout(() => {
+        console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} Added`);
+        setTimeout(() => {
+          console.log("start the machine");
+          setTimeout(() => {
+            console.log(`Ice cream placed on ${stocks.holder[1]}`);
+            setTimeout(() => {
+              console.log(`${stocks.toppings[0]} as toppings`);
+              setTimeout(() => {
+                console.log("serve Ice cream");
+              }, 2000);
+            }, 3000);
+          }, 2000);
+        }, 1000);
+      }, 1000);
+    }, 2000);
+  });
+};
+
+order(0, production);
