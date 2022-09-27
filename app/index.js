@@ -3,9 +3,6 @@ const sum = require("./sum.js")
 const concat = require("./concat.js")
 const fs = require('fs');
 
-array1 = [1,2,3,4,5]
-array2 = [1,2,3,4,5]
-
 // jsonin = {
 //     "array1":[1,2],
 //     "array2":[3,4],
