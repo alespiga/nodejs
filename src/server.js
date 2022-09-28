@@ -1,17 +1,11 @@
-//setup
-const fastify = require("fastify")({
-  logger: true,
-});
+const { build } = require("./app.js");
 
-// Routes
-fastify.get("/", function (request, reply) {
-  reply.send({ hello: "world" });
-});
+const app = build({ logger: true });
 
 // Run
-fastify.listen(3000, function (err, address) {
+app.listen(3000, function (err, address) {
   if (err) {
-    fastify.log.error(err);
+    app.log.error(err);
     process.exit(1);
   }
 });
