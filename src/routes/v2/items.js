@@ -21,6 +21,20 @@ const postItemOpts = {
     },
   },
 };
+const deleteItemOpts = {
+  schema: {
+    response: {
+      200: {
+        type: "object",
+        properties: {
+          message: {
+            type: "string",
+          },
+        },
+      },
+    },
+  },
+};
 
 const itemRoutes_v2 = async (fastify, options, done) => {
   fastify.post("/", postItemOpts, async (request, reply) => {
@@ -76,6 +90,19 @@ const itemRoutes_v2 = async (fastify, options, done) => {
         [name, description, id]
       );
       reply.send(rows[0]);
+    } catch (error) {
+      reply.send(error);
+    } finally {
+      client.relese();
+    }
+  });
+
+  fastify.delete("/:id", deleteItemOpts, async (request, reply) => {
+    const client = await fastify.pg.connect();
+    try {
+      const { id } = request.params;
+      await client.query("DELETE from items WHERE id=$1", [id]);
+      reply.send(`Item ${id} has been deleted`);
     } catch (error) {
       reply.send(error);
     } finally {

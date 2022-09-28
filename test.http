@@ -64,3 +64,7 @@ Content-Type: application/json
     "name":"Updated Item",
     "description" : "New item description changeeeeeeeeed"
 }
+
+
+### DELETE 
+DELETE  http://127.0.0.1:3000/v2/2 HTTP/1.1
