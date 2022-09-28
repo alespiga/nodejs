@@ -18,4 +18,14 @@ Content-Type: application/json
 
 
 ### DELETE 
-DELETE  http://127.0.0.1:3000/1 HTTP/1.1
+DELETE  http://127.0.0.1:3000/6 HTTP/1.1
+
+
+### UPDATE 
+PUT  http://127.0.0.1:3000/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"New Item",
+    "description" : "New item desc modifieeeeeed"
+}
