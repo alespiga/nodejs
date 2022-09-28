@@ -4,9 +4,9 @@
   "description": "first node.js app",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo no test",
-    "dev": "nodemon index.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo no test"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/alespiga/nodejs#readme",
   "dependencies": {
-    "lodash": "^4.17.21",
+    "fastify": "^4.6.0",
     "nodemon": "^2.0.20"
   }
 }
