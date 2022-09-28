@@ -47,6 +47,21 @@ const postItemOpts = {
   },
 };
 
+const deleteItemOpts = {
+  schema: {
+    response: {
+      200: {
+        type: "object",
+        properties: {
+          message: {
+            type: "string",
+          },
+        },
+      },
+    },
+  },
+};
+
 const itemRoutes = (fastify, options, done) => {
   fastify.get("/", getItemsOpts, (request, reply) => {
     reply.send(items);
@@ -63,6 +78,12 @@ const itemRoutes = (fastify, options, done) => {
     const item = { id: String(items.lenght + 1), name, description };
     items.push(item);
     reply.code(201).send(item);
+  });
+
+  fastify.delete("/:id", deleteItemOpts, (request, reply) => {
+    const { id } = request.params;
+    items = items.filter((item) => item.id !== id);
+    reply.send(`Item with ${id} id has been deleted`);
   });
 
   done();
