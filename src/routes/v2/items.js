@@ -50,6 +50,22 @@ const itemRoutes_v2 = async (fastify, options, done) => {
       client.relese();
     }
   });
+
+  fastify.get("/:id", async (request, reply) => {
+    const client = await fastify.pg.connect();
+    try {
+      const { id } = request.params;
+      const { rows } = await client.query("SELECT * FROM items WHERE id=$1", [
+        id,
+      ]);
+      reply.send(rows[0]);
+    } catch (error) {
+      reply.send(error);
+    } finally {
+      client.relese();
+    }
+  });
+
   done();
 };
 

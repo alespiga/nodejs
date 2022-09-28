@@ -50,3 +50,7 @@ Content-Type: application/json
 ### GET ALL ITEMS FROM DB
 
 GET http://127.0.0.1:3000/v2 HTTP/1.1
+
+### GET ITEM with id 1
+
+GET http://127.0.0.1:3000/v2/1 HTTP/1.1
