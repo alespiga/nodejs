@@ -1,4 +1,5 @@
 const { build } = require("./app.js");
+const { env } = require("./config/env");
 
 const app = build(
   { logger: true },
@@ -10,7 +11,7 @@ const app = build(
     },
   },
   {
-    connectionString: "postgres://postgres:postgres@localhost:5432/postgres",
+    connectionString: env.POSTGRES_DB_CONNECTION_STRING,
   }
 );
 
@@ -29,7 +30,7 @@ app.get("/time", (request, reply) => {
 });
 
 // Run
-app.listen(3000, "0.0.0.0", function (err, address) {
+app.listen(env.WEB_APP_PORT, "0.0.0.0", function (err, address) {
   if (err) {
     app.log.error(err);
     process.exit(1);

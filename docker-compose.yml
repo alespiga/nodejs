@@ -5,23 +5,23 @@ services:
     container_name: setup-web-app
     image: node:16.17.0
     working_dir: /usr/src/web-app
-    entrypoit: [ 'npm','install']
+    entrypoint: [ 'npm','install']
     volumes:
-      - ./docker-data/node_modules: /usr7src/web-app/node_modules
-      - ./package.json: /usr/src/web-app/package.json
-      - ./package-lock.json : /usr/src/web-app/package-lock.json
+      - ./docker-data/node_modules:/usr/src/web-app/node_modules
+      - ./package.json:/usr/src/web-app/package.json
+      - ./package-lock.json:/usr/src/web-app/package-lock.json
   
   web-app:
     container_name: web-app
     image: node:16.17.0
     working_dir: /usr/src/web-app
-    entrypoit: [ 'npm','run','start']
+    entrypoint: [ 'npm','run','start']
     ports:
-      -'${WEB_APP_PORT:-8080}:3000'
+      - '${WEB_APP_PORT:-8080}:8080'
     volumes:
-      - ./docker-data/node_modules: /usr7src/web-app/node_modules
-      - ./package.json: /usr/src/web-app/package.json
-      - ./package-lock.json : /usr/src/web-app/package-lock.json
+      - ./docker-data/node_modules:/usr/src/web-app/node_modules
+      - ./package.json:/usr/src/web-app/package.json
+      - ./package-lock.json:/usr/src/web-app/package-lock.json
       - .:/usr/src/web-app
     env_file:
       - .env
@@ -31,10 +31,10 @@ services:
       postgres:
         condition: service_healthy
     healthcheck:
-      test: ['CMD','wget','-q0','-','http://loclhost:8080/healthcheck']
+      test: ['CMD','wget','-q0','-','http://localhost:8080/healthcheck']
       interval: 10s
-      timeout: 10s
-      retries: 5
+      timeout: 5s
+      retries: 10
 
 
   postgres:
