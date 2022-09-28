@@ -10,3 +10,6 @@ docker run -d -p 8080:3000 spigarm/fastify-app
 // to stop
 docker ps
 docker stop c235c741b0cf
+
+// create db image with docker
+docker-compose up
