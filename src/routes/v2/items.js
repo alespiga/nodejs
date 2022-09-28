@@ -66,6 +66,23 @@ const itemRoutes_v2 = async (fastify, options, done) => {
     }
   });
 
+  fastify.put("/:id", async (request, reply) => {
+    const client = await fastify.pg.connect();
+    try {
+      const { id } = request.params;
+      const { name, description } = request.body;
+      const { rows } = await client.query(
+        "UPDATE items SET name=$1, description=$2 WHERE id=$3 RETURNING *",
+        [name, description, id]
+      );
+      reply.send(rows[0]);
+    } catch (error) {
+      reply.send(error);
+    } finally {
+      client.relese();
+    }
+  });
+
   done();
 };
 

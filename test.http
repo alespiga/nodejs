@@ -54,3 +54,13 @@ GET http://127.0.0.1:3000/v2 HTTP/1.1
 ### GET ITEM with id 1
 
 GET http://127.0.0.1:3000/v2/1 HTTP/1.1
+
+
+### UPDATE item with id 2
+PUT  http://127.0.0.1:3000/v2/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Updated Item",
+    "description" : "New item description changeeeeeeeeed"
+}
