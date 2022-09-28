@@ -1,5 +1,5 @@
 const { build } = require("./app.js");
-const { env } = require("./config/env");
+const env = require("./config/env");
 
 const app = build(
   { logger: true },
