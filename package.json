@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/alespiga/nodejs#readme",
   "dependencies": {
+    "@fastify/postgres": "^5.1.0",
     "@fastify/swagger": "^7.6.1",
     "fastify": "^4.6.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0"
   }
 }
