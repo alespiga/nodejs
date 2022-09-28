@@ -106,7 +106,7 @@ const itemRoutes = (fastify, options, done) => {
   fastify.put("/:id", updateItemOpts, (request, reply) => {
     const { id } = request.params;
     const { name, description } = request.body;
-    const item = items.find((item) => item.id == id);
+    const item = items.find((item) => item.id === id);
     item.name = name;
     item.description = description;
     reply.send(item);
