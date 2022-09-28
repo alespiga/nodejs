@@ -38,6 +38,18 @@ const itemRoutes_v2 = async (fastify, options, done) => {
       client.release();
     }
   });
+
+  fastify.get("/", async (request, reply) => {
+    const client = await fastify.pg.connect();
+    try {
+      const { rows } = await client.query("SELECT * FROM items");
+      reply.send(rows);
+    } catch (error) {
+      reply.send(error);
+    } finally {
+      client.relese();
+    }
+  });
   done();
 };
 
