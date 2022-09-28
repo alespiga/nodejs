@@ -8,8 +8,25 @@ const app = build(
     swagger: {
       info: { title: "Fastify API test", version: "1.0.0" },
     },
+  },
+  {
+    connectionString: "postgres://postgres:postgres@localhost:5432/postgres",
   }
 );
+
+app.get("/time", (request, reply) => {
+  app.pg.connect(OnConnect);
+
+  function OnConnect(err, client, release) {
+    if (err) {
+      reply.send(err);
+    }
+    client.query("SELECT now()", function onResult(err, result) {
+      release();
+      reply.send(err || result.rows[0]);
+    });
+  }
+});
 
 // Run
 app.listen(3000, "0.0.0.0", function (err, address) {

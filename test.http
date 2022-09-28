@@ -29,3 +29,8 @@ Content-Type: application/json
     "name":"New Item",
     "description" : "New item desc modifieeeeeed"
 }
+
+
+### GET time // test db connect
+
+GET http://127.0.0.1:3000/time HTTP/1.1
