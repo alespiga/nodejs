@@ -1,33 +1,26 @@
 {
-  "name": "first-app",
+  "name": "basic-server",
   "version": "1.0.0",
-  "description": "first node.js app",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "echo no test"
+    "start": "node src/server.js",
+    "test": "jest --coverage --runInBand",
+    "test:watch": "jest --watchAll"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alespiga/nodejs.git"
-  },
-  "keywords": [
-    "node.js"
-  ],
-  "author": "spigarm",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alespiga/nodejs/issues"
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   },
-  "homepage": "https://github.com/alespiga/nodejs#readme",
   "dependencies": {
     "@fastify/postgres": "^5.1.0",
     "@fastify/swagger": "^7.6.1",
     "dotenv": "^16.0.2",
     "envalid": "^7.3.1",
     "fastify": "^4.6.0",
-    "nodemon": "^2.0.20",
+    "jest": "^29.1.1",
     "pg": "^8.8.0"
   }
 }
